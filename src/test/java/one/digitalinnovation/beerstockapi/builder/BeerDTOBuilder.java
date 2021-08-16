@@ -1,7 +1,7 @@
 package one.digitalinnovation.beerstockapi.builder;
 
 import lombok.Builder;
-import one.digitalinnovation.beerstockapi.dto.BeerDTO;
+import one.digitalinnovation.beerstockapi.dto.BeerDto;
 import one.digitalinnovation.beerstockapi.enums.BeerType;
 
 @Builder
@@ -25,12 +25,12 @@ public class BeerDTOBuilder {
     @Builder.Default
     private BeerType type = BeerType.LAGER;
 
-    public BeerDTO toBeerDTO() {
-        return new BeerDTO(id,
-                name,
-                brand,
-                max,
-                quantity,
-                type);
+    public BeerDto toBeerDTO() {
+        return new BeerDto(id,
+                           name,
+                           brand,
+                           max,
+                           quantity,
+                           type);
     }
 }

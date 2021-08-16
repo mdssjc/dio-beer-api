@@ -1,16 +1,21 @@
 package one.digitalinnovation.beerstockapi.mapper;
 
-import one.digitalinnovation.beerstockapi.dto.BeerDTO;
+import one.digitalinnovation.beerstockapi.dto.BeerDto;
 import one.digitalinnovation.beerstockapi.entity.Beer;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+/**
+ * Mapeamento entre {@link Beer} e {@link BeerDto}.
+ *
+ * @author Marcelo dos Santos
+ */
 @Mapper
 public interface BeerMapper {
 
-    BeerMapper INSTANCE = Mappers.getMapper(BeerMapper.class);
+  BeerMapper INSTANCE = Mappers.getMapper(BeerMapper.class);
 
-    Beer toModel(BeerDTO beerDTO);
+  Beer toModel(BeerDto beerDto);
 
-    BeerDTO toDTO(Beer beer);
+  BeerDto toDto(Beer beer);
 }

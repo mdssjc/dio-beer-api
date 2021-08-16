@@ -1,8 +1,8 @@
 package one.digitalinnovation.beerstockapi.controller;
 
 import one.digitalinnovation.beerstockapi.builder.BeerDTOBuilder;
-import one.digitalinnovation.beerstockapi.dto.BeerDTO;
-import one.digitalinnovation.beerstockapi.dto.QuantityDTO;
+import one.digitalinnovation.beerstockapi.dto.BeerDto;
+import one.digitalinnovation.beerstockapi.dto.QuantityDto;
 import one.digitalinnovation.beerstockapi.exception.BeerNotFoundException;
 import one.digitalinnovation.beerstockapi.service.BeerService;
 import org.junit.jupiter.api.BeforeEach;
@@ -57,7 +57,7 @@ public class BeerControllerTest {
     @Test
     void whenPOSTIsCalledThenABeerIsCreated() throws Exception {
         // given
-        BeerDTO beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
+        BeerDto beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
 
         // when
         when(beerService.createBeer(beerDTO)).thenReturn(beerDTO);
@@ -75,7 +75,7 @@ public class BeerControllerTest {
     @Test
     void whenPOSTIsCalledWithoutRequiredFieldThenAnErrorIsReturned() throws Exception {
         // given
-        BeerDTO beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
+        BeerDto beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
         beerDTO.setBrand(null);
 
         // then
@@ -88,7 +88,7 @@ public class BeerControllerTest {
     @Test
     void whenGETIsCalledWithValidNameThenOkStatusIsReturned() throws Exception {
         // given
-        BeerDTO beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
+        BeerDto beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
 
         //when
         when(beerService.findByName(beerDTO.getName())).thenReturn(beerDTO);
@@ -105,7 +105,7 @@ public class BeerControllerTest {
     @Test
     void whenGETIsCalledWithoutRegisteredNameThenNotFoundStatusIsReturned() throws Exception {
         // given
-        BeerDTO beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
+        BeerDto beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
 
         //when
         when(beerService.findByName(beerDTO.getName())).thenThrow(BeerNotFoundException.class);
@@ -119,7 +119,7 @@ public class BeerControllerTest {
     @Test
     void whenGETListWithBeersIsCalledThenOkStatusIsReturned() throws Exception {
         // given
-        BeerDTO beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
+        BeerDto beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
 
         //when
         when(beerService.listAll()).thenReturn(Collections.singletonList(beerDTO));
@@ -136,7 +136,7 @@ public class BeerControllerTest {
     @Test
     void whenGETListWithoutBeersIsCalledThenOkStatusIsReturned() throws Exception {
         // given
-        BeerDTO beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
+        BeerDto beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
 
         //when
         when(beerService.listAll()).thenReturn(Collections.singletonList(beerDTO));
@@ -150,7 +150,7 @@ public class BeerControllerTest {
     @Test
     void whenDELETEIsCalledWithValidIdThenNoContentStatusIsReturned() throws Exception {
         // given
-        BeerDTO beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
+        BeerDto beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
 
         //when
         doNothing().when(beerService).deleteById(beerDTO.getId());
@@ -174,11 +174,11 @@ public class BeerControllerTest {
 
     @Test
     void whenPATCHIsCalledToIncrementDiscountThenOKstatusIsReturned() throws Exception {
-        QuantityDTO quantityDTO = QuantityDTO.builder()
-                .quantity(10)
-                .build();
+        QuantityDto quantityDTO = QuantityDto.builder()
+                                             .quantity(10)
+                                             .build();
 
-        BeerDTO beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
+        BeerDto beerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
         beerDTO.setQuantity(beerDTO.getQuantity() + quantityDTO.getQuantity());
 
         when(beerService.increment(VALID_BEER_ID, quantityDTO.getQuantity())).thenReturn(beerDTO);

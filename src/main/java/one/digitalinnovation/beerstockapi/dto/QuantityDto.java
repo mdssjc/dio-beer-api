@@ -8,13 +8,18 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
+/**
+ * DTO para extração da quantidade.
+ *
+ * @author Marcelo dos Santos
+ */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class QuantityDTO {
+public class QuantityDto {
 
-    @NotNull
-    @Max(100)
-    private Integer quantity;
+  @NotNull
+  @Max(100)
+  private Integer quantity;
 }
