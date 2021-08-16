@@ -1,5 +1,8 @@
 package one.digitalinnovation.beerstockapi.service;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import one.digitalinnovation.beerstockapi.dto.BeerDto;
 import one.digitalinnovation.beerstockapi.entity.Beer;
@@ -10,10 +13,6 @@ import one.digitalinnovation.beerstockapi.mapper.BeerMapper;
 import one.digitalinnovation.beerstockapi.repository.BeerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * Regras de negócio para a entidade {@link Beer}.
@@ -64,7 +63,8 @@ public class BeerService {
                          .orElseThrow(() -> new BeerNotFoundException(id));
   }
 
-  public BeerDto increment(Long id, int quantity) throws BeerNotFoundException, BeerStockExceededException {
+  public BeerDto increment(Long id, int quantity)
+      throws BeerNotFoundException, BeerStockExceededException {
     Beer beerToIncrementStock = verifyIfExists(id);
     int quantityAfterIncrement = quantity + beerToIncrementStock.getQuantity();
     if (quantityAfterIncrement <= beerToIncrementStock.getMax()) {
@@ -75,7 +75,8 @@ public class BeerService {
     throw new BeerStockExceededException(id, quantity);
   }
 
-  public BeerDto decrement(long id, Integer quantity) throws BeerNotFoundException, BeerStockExceededException {
+  public BeerDto decrement(long id, int quantity)
+      throws BeerNotFoundException, BeerStockExceededException {
     Beer beerToDecrementStock = verifyIfExists(id);
     int quantityAfterDecrement = quantity + beerToDecrementStock.getQuantity();
     if (quantityAfterDecrement <= beerToDecrementStock.getMax()) {

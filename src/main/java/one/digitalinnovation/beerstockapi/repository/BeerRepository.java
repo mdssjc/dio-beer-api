@@ -1,9 +1,8 @@
 package one.digitalinnovation.beerstockapi.repository;
 
+import java.util.Optional;
 import one.digitalinnovation.beerstockapi.entity.Beer;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.Optional;
 
 /**
  * Repositório para a entidade {@link Beer}.

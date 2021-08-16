@@ -1,17 +1,16 @@
 package one.digitalinnovation.beerstockapi.dto;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import one.digitalinnovation.beerstockapi.entity.Beer;
 import one.digitalinnovation.beerstockapi.enums.BeerType;
-
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 /**
  * DTO para a entidade {@link Beer}.
