@@ -4,8 +4,13 @@ import lombok.Builder;
 import one.digitalinnovation.beerstockapi.dto.BeerDto;
 import one.digitalinnovation.beerstockapi.enums.BeerType;
 
+/**
+ * DTO para criação.
+ *
+ * @author Marcelo dos Santos
+ */
 @Builder
-public class BeerDTOBuilder {
+public class BeerDtoBuilder {
 
     @Builder.Default
     private Long id = 1L;
@@ -25,12 +30,7 @@ public class BeerDTOBuilder {
     @Builder.Default
     private BeerType type = BeerType.LAGER;
 
-    public BeerDto toBeerDTO() {
-        return new BeerDto(id,
-                           name,
-                           brand,
-                           max,
-                           quantity,
-                           type);
+    public BeerDto toBeerDto() {
+        return new BeerDto(id, name, brand, max, quantity, type);
     }
 }
