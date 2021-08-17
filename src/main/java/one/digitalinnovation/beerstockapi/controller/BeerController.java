@@ -60,12 +60,14 @@ public class BeerController implements BeerControllerDocs {
     beerService.deleteById(id);
   }
 
+  @Override
   @PatchMapping("/{id}/increment")
   public BeerDto increment(@PathVariable Long id, @RequestBody @Valid QuantityDto quantityDto)
       throws BeerNotFoundException, BeerStockExceededException {
     return beerService.increment(id, quantityDto.getQuantity());
   }
 
+  @Override
   @PatchMapping("/{id}/decrement")
   public BeerDto decrement(@PathVariable Long id, @RequestBody @Valid QuantityDto quantityDto)
       throws BeerNotFoundException, BeerStockExceededException {
