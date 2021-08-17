@@ -4,12 +4,12 @@ Nesta live coding, vamos aprender a testar, unitariamente, uma API REST para o g
 
 Durante a sessão, serão abordados os seguintes tópicos:
 
-* Baixar um projeto através do Git para desenolver nossos testes unitários. 
+* Baixar um projeto através do Git para desenvolver nossos testes unitários. 
 * Apresentação conceitual sobre testes: a pirâmide dos tipos de testes, e também a importância de cada tipo de teste durante o ciclo de desenvolvimento.
 * Foco nos testes unitários: mostrar o porque é importante o desenvolvimento destes tipos de testes como parte do ciclo de desenvolvimento de software.
 * Principais frameworks para testes unitários em Java: JUnit, Mockito e Hamcrest. 
-* Desenvolvimento de testes unitários para validação de funcionalides básicas: criação, listagem, consulta por nome e exclusão de cervejas.
-* TDD: apresentação e exemplo prático em 2 funcionaliades importantes: incremento e decremento do número de cervejas no estoque.
+* Desenvolvimento de testes unitários para validação de funcionalidades básicas: criação, listagem, consulta por nome e exclusão de cervejas.
+* TDD: apresentação e exemplo prático em 2 funcionalidades importantes: incremento e decremento do número de cervejas no estoque.
 
 Para executar o projeto no terminal, digite o seguinte comando:
 
@@ -28,6 +28,20 @@ Após executar o comando acima, basta apenas abrir o seguinte endereço e visual
 ```
 http://localhost:8080/api/v1/beers
 ```
+
+Para validar o sistema, tem que instalar o SonarQube (necessita do Docker instalado) através da execução do comando:
+
+```shell script
+docker run -d --name sonarqube -p 9000:9000 sonarqube
+```
+
+Em seguida adicionar o token (gerado no SonarQube) em sonar.login no pom.xml e executar o comando:
+
+```shell script
+mvn clean install sonar:sonar
+```
+
+Acesse o SonarQube e veja no dashboard as métricas de qualidade.
 
 São necessários os seguintes pré-requisitos para a execução do projeto desenvolvido durante a aula:
 
@@ -51,6 +65,3 @@ Abaixo, seguem links bem bacanas, sobre tópicos mencionados durante a aula:
 * [Referência pirâmide de testes - Martin Fowler](https://martinfowler.com/articles/practical-test-pyramid.html#TheImportanceOftestAutomation)
 
 [Neste link](https://drive.google.com/file/d/1KPh19mvyKirorOI-UsEYHKkmZpet3Ks6/view?usp=sharing), seguem os slides apresentados como o roteiro utilizado para o desenvolvimento do projeto da nossa sessão.
-
-
-
