@@ -21,6 +21,4 @@ public class QuantityDto {
   @NotNull
   @Max(100)
   private Integer quantity;
-
-  private Integer AAAAantity;
 }
